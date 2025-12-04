@@ -27,6 +27,7 @@
   position: relative;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   animation: modalSlideUp 0.3s ease-out;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes modalSlideUp {
@@ -169,7 +170,7 @@
 
 .pix-qrcode-wrapper {
   background: #fff;
-  padding: 16px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 12px;
@@ -209,8 +210,13 @@
   background: #f8f8f8;
   border: 2px dashed #ddd;
   border-radius: 8px;
-  padding: 12px;
+  padding: 16px 12px;
   margin-bottom: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
 }
 
 .pix-code-text {
@@ -219,7 +225,10 @@
   color: #161823;
   word-break: break-all;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.6;
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
 }
 
 .pix-copy-btn {
@@ -227,9 +236,9 @@
   background: #fe2c55;
   color: #fff;
   border: none;
-  padding: 14px;
+  padding: 16px;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -237,10 +246,17 @@
   justify-content: center;
   gap: 8px;
   transition: all 0.2s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pix-copy-btn:hover {
   background: #e02649;
+}
+
+.pix-copy-btn:active {
+  transform: scale(0.98);
+  background: #d41f3f;
 }
 
 .pix-copy-btn.copied {
@@ -342,10 +358,25 @@
 }
 
 @media (max-width: 480px) {
+  .pix-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
   .pix-modal-content {
     max-width: 100%;
-    border-radius: 16px 16px 0 0;
+    border-radius: 20px 20px 0 0;
     max-height: 95vh;
+    margin: 0;
+  }
+
+  .pix-modal-header {
+    padding: 24px 20px 20px;
+  }
+
+  .pix-modal-body {
+    padding: 20px;
+    padding-bottom: 30px;
   }
 
   .pix-amount-value {
@@ -354,5 +385,71 @@
 
   .pix-modal-title {
     font-size: 18px;
+  }
+
+  .pix-qrcode-wrapper {
+    padding: 16px;
+  }
+
+  .pix-qrcode-canvas {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .pix-code-box {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .pix-code-text {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .pix-copy-btn {
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .pix-copy-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .pix-instructions-box {
+    padding: 18px;
+  }
+
+  .pix-instructions-title {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .pix-instructions-list {
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .pix-status-box {
+    padding: 14px;
+  }
+
+  .pix-status-text {
+    font-size: 13px;
+  }
+
+  .pix-success-title {
+    font-size: 18px;
+  }
+
+  .pix-success-text {
+    font-size: 15px;
+  }
+
+  .pix-modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 32px;
   }
 }
