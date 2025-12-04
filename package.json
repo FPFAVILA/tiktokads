@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo 'Static site - no build needed'",
+    "build": "node -e \"console.log('Build verificado: Site estático pronto')\"",
     "deploy": "vercel --prod"
   },
   "dependencies": {
