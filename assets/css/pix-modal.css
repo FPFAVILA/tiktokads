@@ -1,0 +1,358 @@
+.pix-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.pix-modal-overlay.active {
+  display: flex;
+}
+
+.pix-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: modalSlideUp 0.3s ease-out;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pix-modal-header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pix-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #161823;
+  margin: 0;
+}
+
+.pix-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #7f7f7f;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.pix-modal-close:hover {
+  background-color: #f1f1f1;
+}
+
+.pix-modal-body {
+  padding: 20px;
+}
+
+.pix-amount-box {
+  background: linear-gradient(135deg, #fe2c55 0%, #ff5c7c 100%);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pix-amount-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
+}
+
+.pix-amount-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pix-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pix-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f1f1f1;
+  border-top: 4px solid #fe2c55;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pix-loading-text {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.pix-error-container {
+  background: #fff3f3;
+  border: 1px solid #ffcccc;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.pix-error-text {
+  color: #d32f2f;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.pix-retry-btn {
+  background: #fff;
+  border: 1px solid #d32f2f;
+  color: #d32f2f;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pix-retry-btn:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.pix-qrcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pix-qrcode-wrapper {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+}
+
+.pix-qrcode-canvas {
+  display: block;
+}
+
+.pix-qrcode-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #7f7f7f;
+}
+
+.pix-qrcode-icon {
+  width: 16px;
+  height: 16px;
+  fill: #fe2c55;
+}
+
+.pix-code-section {
+  margin-bottom: 20px;
+}
+
+.pix-code-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #7f7f7f;
+  margin-bottom: 12px;
+}
+
+.pix-code-box {
+  background: #f8f8f8;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.pix-code-text {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #161823;
+  word-break: break-all;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pix-copy-btn {
+  width: 100%;
+  background: #fe2c55;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.pix-copy-btn:hover {
+  background: #e02649;
+}
+
+.pix-copy-btn.copied {
+  background: #4caf50;
+}
+
+.pix-copy-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.pix-instructions-box {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.pix-instructions-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #161823;
+  margin-bottom: 12px;
+}
+
+.pix-instructions-list {
+  list-style: decimal;
+  list-style-position: inside;
+  font-size: 12px;
+  color: #7f7f7f;
+  line-height: 1.8;
+}
+
+.pix-instructions-list li {
+  margin-bottom: 4px;
+}
+
+.pix-status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: #fff9e6;
+  border-radius: 8px;
+}
+
+.pix-status-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f1f1f1;
+  border-top: 2px solid #fe2c55;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.pix-status-text {
+  font-size: 12px;
+  color: #7f7f7f;
+}
+
+.pix-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pix-success-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.pix-success-icon {
+  width: 40px;
+  height: 40px;
+  fill: #4caf50;
+}
+
+.pix-success-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4caf50;
+  margin-bottom: 8px;
+}
+
+.pix-success-text {
+  font-size: 14px;
+  color: #7f7f7f;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .pix-modal-content {
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    max-height: 95vh;
+  }
+
+  .pix-amount-value {
+    font-size: 28px;
+  }
+
+  .pix-modal-title {
+    font-size: 18px;
+  }
+}
