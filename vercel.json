@@ -9,6 +9,14 @@
   },
   "rewrites": [
     {
+      "source": "/resgate",
+      "destination": "/resgate.html"
+    },
+    {
+      "source": "/acesso",
+      "destination": "/acesso.html"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }
