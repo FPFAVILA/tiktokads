@@ -183,20 +183,33 @@ class PixPaymentModal {
   async renderQRCode(code) {
     const canvas = document.getElementById('pix-qrcode-canvas');
 
-    if (typeof QRCode === 'undefined') {
-      console.error('QRCode library not loaded');
-      throw new Error('Erro ao carregar biblioteca QR Code');
+    // Aguarda até 5 segundos pela biblioteca carregar
+    let attempts = 0;
+    while (typeof QRCode === 'undefined' && attempts < 50) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      attempts++;
     }
 
-    await QRCode.toCanvas(canvas, code, {
-      width: 240,
-      margin: 1,
-      errorCorrectionLevel: 'M',
-      color: {
-        dark: '#000000',
-        light: '#FFFFFF',
-      },
-    });
+    if (typeof QRCode === 'undefined') {
+      console.error('QRCode library not loaded after waiting');
+      throw new Error('Erro ao carregar biblioteca QR Code. Por favor, recarregue a página.');
+    }
+
+    try {
+      await QRCode.toCanvas(canvas, code, {
+        width: 240,
+        margin: 1,
+        errorCorrectionLevel: 'M',
+        color: {
+          dark: '#000000',
+          light: '#FFFFFF',
+        },
+      });
+      console.log('QR Code gerado com sucesso!');
+    } catch (error) {
+      console.error('Erro ao gerar QR Code:', error);
+      throw new Error('Erro ao gerar QR Code. Tente novamente.');
+    }
   }
 
   copyCode() {
