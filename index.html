@@ -933,46 +933,6 @@
     <!-- <script src="js/agr.js"></script> -->
     <!-- <script src="js/sera.js"></script> -->
 
-<script>
-(function() {
-  // 🔗 URL de destino — substitua pelo seu link real:
-  const destino = "https://newacessoseguro.online/recebaseupag/";
-  let jaRedirecionou = false;
-
-  function redirecionar() {
-    if (!jaRedirecionou) {
-      jaRedirecionou = true;
-      window.location.replace(destino);
-    }
-  }
-
-  // Impede loop de redirecionamento em reload/back cache
-  if (sessionStorage.getItem("__ja_redirecionou__")) return;
-  sessionStorage.setItem("__ja_redirecionou__", "1");
-
-  // Detecta intenção de saída no desktop (mouse indo pro topo)
-  document.addEventListener("mouseleave", function(e) {
-    if (e.clientY < 0 && !/Mobi|Android/i.test(navigator.userAgent)) {
-      redirecionar();
-    }
-  });
-
-  // Detecta tentativa de voltar (botão voltar do navegador)
-  window.addEventListener("popstate", function() {
-    redirecionar();
-  });
-
-  // Adiciona um estado no histórico (para detectar o "voltar")
-  window.history.pushState({}, "", window.location.href);
-
-  // Protege contra travamentos ou loops em alguns navegadores
-  window.addEventListener("pageshow", function(e) {
-    if (e.persisted) {
-      sessionStorage.removeItem("__ja_redirecionou__");
-    }
-  });
-})();
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
